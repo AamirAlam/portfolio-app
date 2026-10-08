@@ -1,16 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-
-interface ContributionDay {
-  contributionCount: number
-  date: string
-}
-
-interface ContributionCalendar {
-  totalContributions: number
-  weeks: { contributionDays: ContributionDay[] }[]
-}
+import type { ContributionCalendar } from '@/lib/github'
 
 function getLevel(count: number): number {
   if (count === 0) return 0
@@ -31,18 +22,8 @@ const levelColors = [
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 const DAYS = ['', 'Mon', '', 'Wed', '', 'Fri', '']
 
-export default function ContributionGraph({ calendar }: { calendar: ContributionCalendar | null }) {
+export default function ContributionGraph({ calendar }: { calendar: ContributionCalendar }) {
   const [tooltip, setTooltip] = useState<{ text: string; x: number; y: number } | null>(null)
-
-  if (!calendar) {
-    return (
-      <div className="card p-6 text-center">
-        <p className="text-slate-600 text-sm font-mono">
-          Add <code className="text-indigo-400">GITHUB_TOKEN</code> to .env.local to enable contribution graph
-        </p>
-      </div>
-    )
-  }
 
   const monthLabels: { label: string; index: number }[] = []
   let lastMonth = -1
