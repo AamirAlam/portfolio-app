@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import { profile } from '@/content/profile'
 
 const links = [
+  { href: '#approach', label: 'Approach' },
+  { href: '#principles', label: 'Principles' },
   { href: '#shipping', label: 'Shipping' },
   { href: '#skills', label: 'Skills' },
   { href: '#projects', label: 'Projects' },

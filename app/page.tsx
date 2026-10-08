@@ -1,5 +1,7 @@
 import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
+import Approach from '@/components/Approach'
+import Principles from '@/components/Principles'
 import GitHubActivity from '@/components/GitHubActivity'
 import Skills from '@/components/Skills'
 import Projects from '@/components/Projects'
@@ -12,6 +14,8 @@ export default function Home() {
     <main className="bg-[#070710] text-slate-100 min-h-screen">
       <Nav />
       <Hero />
+      <Approach />
+      <Principles />
       <GitHubActivity />
       <Skills />
       <Projects />
