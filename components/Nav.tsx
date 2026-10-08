@@ -6,9 +6,9 @@ import { profile } from '@/content/profile'
 const links = [
   { href: '#approach', label: 'Approach' },
   { href: '#principles', label: 'Principles' },
+  { href: '#work', label: 'Work' },
   { href: '#shipping', label: 'Shipping' },
   { href: '#skills', label: 'Skills' },
-  { href: '#projects', label: 'Projects' },
   { href: '#experience', label: 'Experience' },
 ]
 
