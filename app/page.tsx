@@ -18,8 +18,8 @@ export default function Home() {
       <Principles />
       <CaseStudies />
       <GitHubActivity />
-      <Skills />
       <Experience />
+      <Skills />
       <Achievements />
       <Footer />
     </main>

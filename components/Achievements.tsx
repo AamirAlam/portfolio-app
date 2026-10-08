@@ -1,38 +1,10 @@
-const achievements = [
-  {
-    title: 'ETH Istanbul 2023',
-    subtitle: 'Most Refined Project — Winner',
-    description: 'ETH Global Istanbul hackathon. Recognized for the most refined and production-quality decentralized interface.',
-    badge: '🏆',
-    color: 'from-amber-500/10 to-orange-500/5',
-    border: 'border-amber-500/20',
-    textColor: 'text-amber-400',
-  },
-  {
-    title: 'ETH India 2024',
-    subtitle: 'Finalist',
-    description: 'Selected as a finalist at ETH India 2024 for innovative project development in the Ethereum ecosystem.',
-    badge: '🎯',
-    color: 'from-violet-500/10 to-indigo-500/5',
-    border: 'border-violet-500/20',
-    textColor: 'text-violet-400',
-  },
-  {
-    title: "Master's in Software Engineering",
-    subtitle: 'Zakir Husain College of Engineering & Technology',
-    description: '2018 – 2020 · Aligarh, India. Specialized in software systems design and engineering.',
-    badge: '🎓',
-    color: 'from-emerald-500/10 to-cyan-500/5',
-    border: 'border-emerald-500/20',
-    textColor: 'text-emerald-400',
-  },
-]
+import { achievements } from '@/content/achievements'
+import SectionHeader from './ui/SectionHeader'
 
 export default function Achievements() {
   return (
-    <section className="max-w-6xl mx-auto px-6 py-20">
-      <SectionLabel>// recognition</SectionLabel>
-      <h2 className="text-2xl font-bold text-slate-100 mb-8 mt-2">Achievements & Education</h2>
+    <section id="recognition" className="max-w-6xl mx-auto px-6 py-20 scroll-mt-20">
+      <SectionHeader label="recognition" title="Achievements & Education" />
 
       <div className="grid md:grid-cols-3 gap-4">
         {achievements.map((a) => (
@@ -48,11 +20,5 @@ export default function Achievements() {
         ))}
       </div>
     </section>
-  )
-}
-
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="text-xs font-mono text-indigo-400 tracking-widest uppercase">{children}</div>
   )
 }
