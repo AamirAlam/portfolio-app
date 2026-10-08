@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { profile } from '@/content/profile'
 
 const links = [
   { href: '#shipping', label: 'Shipping' },
@@ -35,9 +36,15 @@ export default function Nav() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <span className="font-mono text-sm text-indigo-400 font-medium tracking-wider">
-          aamir.eth
-        </span>
+        <a
+          href="#top"
+          className="font-mono text-sm text-slate-100 font-semibold tracking-wider"
+        >
+          {profile.name.split(' ')[0].toLowerCase()}
+          <span className="text-indigo-400">
+            .{profile.name.split(' ').slice(1).join('').toLowerCase()}
+          </span>
+        </a>
 
         {/* Desktop links */}
         <div className="hidden sm:flex items-center gap-8">
@@ -51,10 +58,10 @@ export default function Nav() {
             </a>
           ))}
           <a
-            href="mailto:aamiralam1991@gmail.com"
+            href={`mailto:${profile.email}`}
             className="text-sm px-4 py-1.5 rounded-lg border border-indigo-500/30 text-indigo-300 hover:bg-indigo-500/10 transition-colors"
           >
-            Hire me
+            Book a call
           </a>
         </div>
 
@@ -100,11 +107,11 @@ export default function Nav() {
             </a>
           ))}
           <a
-            href="mailto:aamiralam1991@gmail.com"
+            href={`mailto:${profile.email}`}
             onClick={() => setOpen(false)}
             className="mt-3 text-sm text-center px-4 py-2 rounded-lg border border-indigo-500/30 text-indigo-300 hover:bg-indigo-500/10 transition-colors"
           >
-            Hire me
+            Book a call
           </a>
         </div>
       </div>

@@ -1,48 +1,49 @@
-import Image from 'next/image'
+import { profile } from '@/content/profile'
 
 export default function Hero() {
+  // Gradient-highlight the final three words of the headline (mockup: "agents that ship.").
+  const words = profile.headline.split(' ')
+  const plain = words.slice(0, -3).join(' ')
+  const grad = words.slice(-3).join(' ')
+
   return (
-    <section className="relative min-h-screen flex items-center grid-bg overflow-hidden">
+    <section
+      id="top"
+      className="relative min-h-screen flex items-center grid-bg overflow-hidden"
+    >
       {/* Glow blobs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-[10%] w-[26rem] h-[26rem] bg-violet-600/12 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyan-600/8 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-6 py-32 w-full">
-        <div className="flex flex-col lg:flex-row items-center gap-16">
+      <div className="max-w-6xl mx-auto px-6 py-32 w-full relative">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.35fr_1fr] gap-12 lg:gap-14 items-center">
           {/* Text */}
-          <div className="flex-1 space-y-6">
-            <div className="flex items-center gap-2 text-sm font-mono text-violet-400">
+          <div className="space-y-6">
+            <div className="flex items-center gap-2 text-xs font-mono text-indigo-400 tracking-widest uppercase">
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse-slow inline-block" />
-              Open to new opportunities
+              {`// ${profile.role} · ${profile.focus}`}
             </div>
 
-            <h1 className="text-5xl lg:text-6xl font-bold text-slate-100 leading-tight tracking-tight">
-              Aamir Alam
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-100 leading-[1.05] tracking-tight">
+              {plain && <>{plain} </>}
+              <span className="bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent">
+                {grad}
+              </span>
             </h1>
 
-            <p className="text-xl text-slate-400 font-medium">
-              Senior Full Stack Engineer{' '}
-              <span className="text-indigo-400">/</span>{' '}
-              Web3 Developer
+            <p className="text-lg text-slate-400 max-w-xl leading-relaxed">
+              {profile.lead}
             </p>
-
-            <p className="text-slate-500 max-w-lg leading-relaxed">
-              4.5+ years building high-performance dApps, DeFi protocols, and on-chain systems.
-              Bridging design with blockchain logic — from smart contracts to pixel-perfect UIs.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-3 pt-2">
-              <div className="flex items-center gap-1.5 text-xs font-mono text-amber-400 bg-amber-400/10 border border-amber-400/20 rounded-full px-3 py-1.5">
-                🏆 ETH Istanbul 2023 Winner
-              </div>
-              <div className="flex items-center gap-1.5 text-xs font-mono text-violet-400 bg-violet-400/10 border border-violet-400/20 rounded-full px-3 py-1.5">
-                🎯 ETH India 2024 Finalist
-              </div>
-            </div>
 
             <div className="flex flex-wrap gap-3 pt-2">
               <a
-                href="https://github.com/AamirAlam"
+                href="#approach"
+                className="flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-sm font-medium transition-colors"
+              >
+                See how I work →
+              </a>
+              <a
+                href={profile.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-sm font-medium transition-colors"
@@ -51,19 +52,10 @@ export default function Hero() {
                 GitHub
               </a>
               <a
-                href="https://x.com/AamirAlam201096"
+                href={profile.links.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-sm font-medium transition-colors"
-              >
-                <XIcon />
-                Twitter / X
-              </a>
-              <a
-                href="https://www.linkedin.com/in/aamir2alam/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-sm font-medium transition-colors"
               >
                 <LinkedInIcon />
                 LinkedIn
@@ -71,34 +63,55 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Avatar */}
-          <div className="flex-shrink-0">
-            <div className="relative">
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-500/30 to-cyan-500/20 blur-xl scale-110" />
-              <div className="relative w-64 h-64 rounded-2xl overflow-hidden border border-indigo-500/20 glow-violet">
-                <Image
-                  src="https://avatars.githubusercontent.com/u/56264430"
-                  alt="Aamir Alam"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-              {/* Ethereum badge */}
-              <div className="absolute -bottom-3 -right-3 w-12 h-12 bg-[#627eea] rounded-xl flex items-center justify-center shadow-lg border border-indigo-400/30">
-                <EthIcon />
-              </div>
+          {/* Terminal agent-run card */}
+          <TerminalCard lines={profile.agentRun} />
+        </div>
+
+        {/* Metrics strip */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-12">
+          {profile.metrics.map((m) => (
+            <div key={m.label} className="card p-4">
+              <div className="text-2xl font-bold text-slate-100">{m.value}</div>
+              <div className="text-xs text-slate-500 mt-1">{m.label}</div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-600 text-xs">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-slate-600 text-xs hidden md:flex">
         <span className="font-mono">scroll</span>
         <div className="w-px h-8 bg-gradient-to-b from-slate-600 to-transparent" />
       </div>
     </section>
+  )
+}
+
+function TerminalCard({ lines }: { lines: string[] }) {
+  return (
+    <div className="card p-5 font-mono text-[12.5px] leading-relaxed glow-violet">
+      <div className="flex gap-1.5 mb-3">
+        <span className="w-2.5 h-2.5 rounded-full bg-slate-700 inline-block" />
+        <span className="w-2.5 h-2.5 rounded-full bg-slate-700 inline-block" />
+        <span className="w-2.5 h-2.5 rounded-full bg-slate-700 inline-block" />
+      </div>
+      <div className="space-y-1">
+        {lines.map((line, i) => (
+          <div
+            key={i}
+            className={
+              i === 0
+                ? 'text-slate-500'
+                : i === lines.length - 1
+                  ? 'text-emerald-400'
+                  : 'text-slate-300'
+            }
+          >
+            {line}
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
 
@@ -110,27 +123,10 @@ function GitHubIcon() {
   )
 }
 
-function XIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.26 5.632L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z" />
-    </svg>
-  )
-}
-
 function LinkedInIcon() {
   return (
     <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-    </svg>
-  )
-}
-
-function EthIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 32 32" fill="white">
-      <path d="M16 4l-9 13 9 5.5 9-5.5z" opacity="0.8" />
-      <path d="M7 17l9 11 9-11-9 5.5z" opacity="0.6" />
     </svg>
   )
 }
