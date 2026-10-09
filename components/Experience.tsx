@@ -1,68 +1,12 @@
-const jobs = [
-  {
-    company: 'API3',
-    role: 'Software Engineer',
-    period: 'Sep 2023 — Present',
-    location: 'Remote',
-    color: 'text-violet-400',
-    dot: 'bg-violet-400',
-    bullets: [
-      'Architected ecosystem platform using Nuxt3 + Nitro to showcase dApps — boosted developer engagement 25% in 3 months',
-      'Automated AAVE V2 & Compound V3 deployments via scripts and pipelines, cutting launch cycles by 30%',
-      'Built liquidation profit analytics scripts for builder bots, improving DeFi strategy accuracy by 20%',
-    ],
-    tags: ['Nuxt3', 'Nitro', 'DeFi', 'TypeScript'],
-  },
-  {
-    company: 'QuickSwap',
-    role: 'Full Stack Engineer',
-    period: 'Aug 2022 — Sep 2023',
-    location: 'Remote',
-    color: 'text-cyan-400',
-    dot: 'bg-cyan-400',
-    bullets: [
-      'Optimized frontend with React Lazy Load and re-render minimization — load times improved 80%',
-      'Achieved 35% application speed boost through targeted React component optimization',
-      'Developed React components for QuickSwap V3, expanding functionality and growing active users 15%',
-    ],
-    tags: ['React', 'TypeScript', 'DEX', 'Polygon'],
-  },
-  {
-    company: 'Polkabridge',
-    role: 'Senior Full Stack Developer',
-    period: 'Jul 2021 — Aug 2022',
-    location: 'Remote',
-    color: 'text-emerald-400',
-    dot: 'bg-emerald-400',
-    bullets: [
-      'Led multichain AMM and yield systems for 20K+ users across Polygon, BSC, and Ethereum',
-      'Built P2P platform using MongoDB and Express with reusable React components',
-      'Architected Staking and Launchpad dApps — 200K+ trading volume, 30+ IDOs launched',
-    ],
-    tags: ['Solidity', 'React', 'MongoDB', 'Multichain'],
-  },
-  {
-    company: 'Endovision Hong Kong',
-    role: 'Fullstack Developer',
-    period: 'Jul 2020 — Jul 2021',
-    location: 'Remote',
-    color: 'text-amber-400',
-    dot: 'bg-amber-400',
-    bullets: [
-      'Developed frame sequence and area labeling features with PyQt5 — model accuracy from 45% to 87%',
-      'Built upload feature for AI experiment visualization, cutting integration time from 2-3 hours to under 1 minute',
-    ],
-    tags: ['Python', 'PyQt5', 'ML', 'Computer Vision'],
-  },
-]
+import { jobs } from '@/content/experience'
+import SectionHeader from './ui/SectionHeader'
 
 export default function Experience() {
   return (
-    <section id="experience" className="max-w-6xl mx-auto px-6 py-20">
-      <SectionLabel>// experience</SectionLabel>
-      <h2 className="text-2xl font-bold text-slate-100 mb-12 mt-2">Work History</h2>
+    <section id="experience" className="max-w-6xl mx-auto px-6 py-20 scroll-mt-20">
+      <SectionHeader label="experience" title="Where I've shipped" />
 
-      <div className="relative">
+      <div className="relative mt-4">
         {/* Timeline line */}
         <div className="absolute left-0 top-2 bottom-2 w-px bg-gradient-to-b from-violet-500/40 via-indigo-500/20 to-transparent" />
 
@@ -103,11 +47,5 @@ export default function Experience() {
         </div>
       </div>
     </section>
-  )
-}
-
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="text-xs font-mono text-indigo-400 tracking-widest uppercase">{children}</div>
   )
 }

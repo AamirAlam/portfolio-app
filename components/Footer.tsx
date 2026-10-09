@@ -1,33 +1,45 @@
+import { profile } from '@/content/profile'
+
 export default function Footer() {
   return (
     <footer className="border-t border-indigo-500/10 mt-10">
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between md:items-center">
+      <div className="max-w-6xl mx-auto px-6 py-16 text-center">
+        {/* CTA */}
+        <h2 className="text-2xl font-bold text-slate-100">
+          Have a repetitive workflow worth automating?
+        </h2>
+        {/* TODO(copy): CTA sub-line. */}
+        <p className="text-slate-500 text-sm mt-3 mb-7">
+          Tell me what&apos;s eating your team&apos;s week.
+        </p>
+        <a
+          href={`mailto:${profile.email}`}
+          className="inline-flex items-center gap-2 text-sm px-5 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white transition-colors"
+        >
+          {profile.email}
+        </a>
 
+        <div className="flex flex-col items-center gap-6 mt-12 md:flex-row md:justify-between md:text-left">
           {/* Identity */}
           <div className="text-center md:text-left">
-            <div className="font-mono text-indigo-400 font-medium mb-1">Aamir Alam</div>
-            <div className="text-slate-600 text-sm">Senior Full Stack & Web3 Engineer · Delhi, India</div>
+            <div className="font-mono text-indigo-400 font-medium mb-1">
+              {profile.name}
+            </div>
+            <div className="text-slate-600 text-sm">
+              {profile.role} · Delhi, India
+            </div>
           </div>
 
-          {/* Links + CTA */}
-          <div className="flex flex-col items-center gap-4 md:flex-row md:gap-6">
-            <div className="flex items-center gap-5 flex-wrap justify-center">
-              <FooterLink href="https://github.com/AamirAlam" label="GitHub" />
-              <FooterLink href="https://x.com/AamirAlam201096" label="Twitter / X" />
-              <FooterLink href="https://www.linkedin.com/in/aamir2alam/" label="LinkedIn" />
-              <FooterLink href="https://devfolio.co/projects/flow-bd3f" label="DevFolio" />
-            </div>
-            <a
-              href="mailto:aamiralam1991@gmail.com"
-              className="text-sm px-5 py-2 rounded-lg bg-violet-600/90 hover:bg-violet-600 text-white transition-colors whitespace-nowrap"
-            >
-              Get in touch
-            </a>
+          {/* Links */}
+          <div className="flex items-center gap-5 flex-wrap justify-center">
+            <FooterLink href={profile.links.github} label="GitHub" />
+            <FooterLink href={profile.links.x} label="Twitter / X" />
+            <FooterLink href={profile.links.linkedin} label="LinkedIn" />
+            <FooterLink href={profile.links.devfolio} label="DevFolio" />
           </div>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-indigo-500/5 text-center text-xs text-slate-700 font-mono">
+        <div className="mt-8 pt-6 border-t border-indigo-500/5 text-xs text-slate-700 font-mono">
           Built with Next.js 14 · Deployed on Vercel
         </div>
       </div>

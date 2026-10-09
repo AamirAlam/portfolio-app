@@ -1,8 +1,10 @@
 import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
-import LiveStats from '@/components/LiveStats'
+import Approach from '@/components/Approach'
+import Principles from '@/components/Principles'
+import CaseStudies from '@/components/CaseStudies'
+import GitHubActivity from '@/components/GitHubActivity'
 import Skills from '@/components/Skills'
-import Projects from '@/components/Projects'
 import Experience from '@/components/Experience'
 import Achievements from '@/components/Achievements'
 import Footer from '@/components/Footer'
@@ -12,10 +14,12 @@ export default function Home() {
     <main className="bg-[#070710] text-slate-100 min-h-screen">
       <Nav />
       <Hero />
-      <LiveStats />
-      <Skills />
-      <Projects />
+      <Approach />
+      <Principles />
+      <CaseStudies />
+      <GitHubActivity />
       <Experience />
+      <Skills />
       <Achievements />
       <Footer />
     </main>
