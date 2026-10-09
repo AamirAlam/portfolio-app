@@ -11,19 +11,14 @@ export interface CaseStudy {
   links: { live?: string; repo?: string }
 }
 
-// TODO(copy): narrative case studies. Problem/approach/impact are drafts for
-// the owner to rewrite. Impact pills use only figures already on the site; any
-// missing metric is left as a `draft: …` placeholder rather than invented.
 export const caseStudies: CaseStudy[] = [
   {
     slug: 'neura-vaults',
     name: 'Neura Vaults',
-    period: 'Apr – Sep 2025',
-    kind: ['agentic', 'DeFi'],
-    // TODO(copy)
+    period: 'Apr 2025 – present',
+    kind: ['agentic', 'DeFi', 'live'],
     problem:
-      'Vault rebalancing needed constant manual judgement across volatile markets.',
-    // TODO(copy)
+      'Vault rebalancing needed constant manual judgement across volatile markets, which does not scale as deposits grow.',
     approach:
       'Async ERC-7540 deposits on-chain, plus off-chain CrewAI agents that propose rebalances under hard policy limits with a human approving irreversible moves.',
     architecture: [
@@ -32,42 +27,36 @@ export const caseStudies: CaseStudy[] = [
       'policy guard',
       'ERC-4626 vault',
     ],
-    // TODO(copy): no public figures for this project yet — placeholders only.
-    impact: ['draft: impact metric', 'draft: impact metric'],
+    impact: ['200+ users', '$150K+ in funds managed', 'live in production'],
     stack: ['Solidity', 'ERC-4626', 'ERC-7540', 'CrewAI', 'LLMs', 'TypeScript'],
     links: { live: 'https://neuravaults.xyz/' },
   },
   {
     slug: 'context-sanitizer',
     name: 'Context Sanitizer · SLM data pipeline',
-    period: '2026',
+    period: '2026 · in progress',
     kind: ['agentic', 'data'],
-    // TODO(copy)
     problem:
       'Raw dumps cannot be viewed or trained on safely because secrets and PII leak into prompts and datasets.',
-    // TODO(copy)
     approach:
-      'A deterministic detect-then-redact pipeline sanitizes raw inputs before anything reaches a model, producing a clean dataset for small-language-model fine-tuning.',
-    architecture: ['raw dump', 'detect', 'redact', 'SLM dataset'],
-    // TODO(copy): placeholders until real figures exist.
-    impact: ['draft: impact metric'],
+      'A deterministic detect-then-redact pipeline sanitizes raw inputs before anything reaches a model. The first POC is live; work now is preparing training and test data for small-language-model training and evaluation.',
+    architecture: ['raw dump', 'detect', 'redact', 'SLM train/eval set'],
+    impact: ['First POC shipped', 'Building SLM train & eval datasets'],
     stack: ['Python', 'LLMs', 'SLMs', 'evals'],
     links: { repo: 'https://github.com/AamirAlam/context-sanitizer' },
   },
   {
-    slug: 'caliber',
-    name: 'Caliber',
-    period: '2026',
-    kind: ['agentic', 'tooling'],
-    // TODO(copy)
-    problem: 'draft: the repetitive workflow caliber removes.',
-    // TODO(copy)
-    approach: 'draft: how the agent is scoped, guarded, and evaluated.',
-    // TODO(copy)
-    architecture: ['input', 'agent', 'guardrails', 'output'],
-    // TODO(copy): placeholders until real figures exist.
-    impact: ['draft: impact metric'],
-    stack: ['TypeScript', 'LLMs', 'evals'],
-    links: { repo: 'https://github.com/AamirAlam/caliber' },
+    slug: 'linkedin-scam-agent',
+    name: 'LinkedIn Scam Detection Agent',
+    period: '2026 · in progress',
+    kind: ['agentic', 'safety'],
+    problem:
+      'LinkedIn job DMs and recruiter emails are a common vector for scams, and vetting each one by hand is slow and error-prone.',
+    approach:
+      'An agent reads an incoming LinkedIn job message or email, reviews the job description and sender signals, and flags likely scams with its reasoning, keeping a human in the loop on the final call.',
+    architecture: ['job DM / email', 'agent review', 'risk signals', 'scam verdict'],
+    impact: ['In active development'],
+    stack: ['TypeScript', 'LLMs', 'agents', 'evals'],
+    links: { repo: 'https://github.com/AamirAlam/LinkedInJobScamAgent' },
   },
 ]
