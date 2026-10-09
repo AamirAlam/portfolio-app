@@ -1,5 +1,6 @@
 import { approach } from '@/content/approach'
 import SectionHeader from './ui/SectionHeader'
+import Reveal from './ui/Reveal'
 
 export default function Approach() {
   return (
@@ -21,7 +22,11 @@ export default function Approach() {
         />
 
         {approach.map((step, i) => (
-          <div key={step.id} className="card p-5 relative flex flex-col gap-2">
+          <Reveal
+            key={step.id}
+            delay={i * 80}
+            className="card p-5 relative flex flex-col gap-2"
+          >
             <span className="text-xs font-mono text-violet-400">
               {String(i + 1).padStart(2, '0')}
             </span>
@@ -31,7 +36,7 @@ export default function Approach() {
             <p className="text-slate-500 text-sm leading-relaxed">
               {step.body}
             </p>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>

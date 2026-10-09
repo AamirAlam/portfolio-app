@@ -1,6 +1,7 @@
 import { getRecentRepos, getContributionCalendar, type Repo } from '@/lib/github'
 import SectionHeader from './ui/SectionHeader'
 import ContributionGraph from './ContributionGraph'
+import Reveal from './ui/Reveal'
 
 function timeAgo(iso: string): string {
   const then = new Date(iso).getTime()
@@ -33,7 +34,7 @@ function RepoCard({ repo }: { repo: Repo }) {
       href={repo.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="card p-5 flex flex-col gap-3"
+      className="card p-5 flex flex-col gap-3 h-full"
     >
       <div className="flex items-center justify-between gap-3">
         <span className="text-xs text-slate-600 font-mono">
@@ -93,8 +94,10 @@ export default async function GitHubActivity() {
 
       {repos.length > 0 && (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-          {repos.map((repo) => (
-            <RepoCard key={repo.name} repo={repo} />
+          {repos.map((repo, i) => (
+            <Reveal key={repo.name} delay={i * 60} className="h-full">
+              <RepoCard repo={repo} />
+            </Reveal>
           ))}
         </div>
       )}

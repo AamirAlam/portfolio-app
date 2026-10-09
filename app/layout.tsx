@@ -40,7 +40,19 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
-      <body>{children}</body>
+      <body>
+        {/*
+          Marks that JS is available before first paint, which enables the
+          scroll-reveal hidden state (.js .section-fade in globals.css). With
+          JS disabled this never runs, so all content stays visible.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
+        {children}
+      </body>
     </html>
   )
 }

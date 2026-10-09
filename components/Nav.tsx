@@ -14,11 +14,29 @@ const links = [
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [active, setActive] = useState('')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // Highlight the nav link for the section crossing the upper-middle band.
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(e.target.id)
+        })
+      },
+      { rootMargin: '-40% 0px -55% 0px' },
+    )
+    links.forEach((l) => {
+      const el = document.getElementById(l.href.slice(1))
+      if (el) observer.observe(el)
+    })
+    return () => observer.disconnect()
   }, [])
 
   // Close menu on resize to desktop
@@ -49,15 +67,23 @@ export default function Nav() {
 
         {/* Desktop links */}
         <div className="hidden sm:flex items-center gap-8">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm text-slate-400 hover:text-slate-100 transition-colors"
-            >
-              {l.label}
-            </a>
-          ))}
+          {links.map((l) => {
+            const isActive = active === l.href.slice(1)
+            return (
+              <a
+                key={l.href}
+                href={l.href}
+                aria-current={isActive ? 'true' : undefined}
+                className={`text-sm transition-colors border-b ${
+                  isActive
+                    ? 'text-slate-100 border-indigo-400'
+                    : 'text-slate-400 border-transparent hover:text-slate-100'
+                }`}
+              >
+                {l.label}
+              </a>
+            )
+          })}
           <a
             href={`mailto:${profile.email}`}
             className="text-sm px-4 py-1.5 rounded-lg border border-indigo-500/30 text-indigo-300 hover:bg-indigo-500/10 transition-colors"

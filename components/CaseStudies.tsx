@@ -1,5 +1,6 @@
 import { caseStudies, type CaseStudy } from '@/content/caseStudies'
 import SectionHeader from './ui/SectionHeader'
+import Reveal from './ui/Reveal'
 
 function Flow({ nodes }: { nodes: string[] }) {
   return (
@@ -123,8 +124,10 @@ export default function CaseStudies() {
       />
 
       <div className="flex flex-col gap-4">
-        {caseStudies.map((study) => (
-          <CaseStudyCard key={study.slug} study={study} />
+        {caseStudies.map((study, i) => (
+          <Reveal key={study.slug} delay={i * 80}>
+            <CaseStudyCard study={study} />
+          </Reveal>
         ))}
       </div>
     </section>

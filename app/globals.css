@@ -35,15 +35,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.section-fade {
+/*
+ * Scroll-reveal initial state is gated on `.js`, which the inline script in
+ * layout.tsx adds to <html> before first paint. Without JavaScript the class
+ * is never added, so the content renders fully visible.
+ */
+.js .section-fade {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.section-fade.visible {
+.js .section-fade.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .section-fade {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 .grid-bg {
