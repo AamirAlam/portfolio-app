@@ -4,31 +4,31 @@ export interface ApproachStep {
   body: string
 }
 
-// TODO(copy): the problem-solving loop — Embed · Map · Prototype · Harden · Measure.
+// The problem-solving loop — Research · Plan · Build · Evaluate · Fix.
 export const approach: ApproachStep[] = [
   {
-    id: 'embed',
-    title: 'Embed',
-    body: 'Sit with the people doing the work. Find the real bottleneck, not the stated one.',
+    id: 'research',
+    title: 'Research',
+    body: 'Talk to users and find the real problem, not just the stated one.',
   },
   {
-    id: 'map',
-    title: 'Map',
-    body: 'Turn the workflow into steps, decisions, and systems of record.',
+    id: 'plan',
+    title: 'Plan',
+    body: "Break the work into steps and agree on how we'll measure success.",
   },
   {
-    id: 'prototype',
-    title: 'Prototype',
-    body: 'Ship a thin agent in days, deterministic where possible and with an LLM where it pays.',
+    id: 'build',
+    title: 'Build',
+    body: 'Ship a small working version fast, then grow it.',
   },
   {
-    id: 'harden',
-    title: 'Harden',
-    body: 'Add evals, guardrails, observability, and a human approval step for every irreversible action.',
+    id: 'evaluate',
+    title: 'Evaluate',
+    body: 'Test against real examples before every release.',
   },
   {
-    id: 'measure',
-    title: 'Measure',
-    body: 'Hours saved, error rate, adoption. Iterate or kill.',
+    id: 'fix',
+    title: 'Fix',
+    body: 'Watch it in production, fix what breaks, and keep improving.',
   },
 ]

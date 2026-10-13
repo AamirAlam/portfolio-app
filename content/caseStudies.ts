@@ -15,12 +15,12 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: 'neura-vaults',
     name: 'Neura Vaults',
-    period: 'Apr 2025 – present',
+    period: '2025 – present',
     kind: ['agentic', 'DeFi', 'live'],
     problem:
-      'Vault rebalancing needed constant manual judgement across volatile markets, which does not scale as deposits grow.',
+      'Rebalancing a vault by hand takes constant attention in fast-moving markets, and that does not scale as deposits grow.',
     approach:
-      'Async ERC-7540 deposits on-chain, plus off-chain CrewAI agents that propose rebalances under hard policy limits with a human approving irreversible moves.',
+      'AI agents (CrewAI) suggest how to rebalance funds within strict rules, and a person approves each move. Deposits run on-chain through ERC-7540 vaults.',
     architecture: [
       'market data',
       'CrewAI analyst',
@@ -33,15 +33,15 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'context-sanitizer',
-    name: 'Context Sanitizer · SLM data pipeline',
+    name: 'Context Sanitizer',
     period: '2026 · in progress',
     kind: ['agentic', 'data'],
     problem:
-      'Raw dumps cannot be viewed or trained on safely because secrets and PII leak into prompts and datasets.',
+      'Raw files often contain passwords and personal data, so they cannot safely be used to train or test AI models.',
     approach:
-      'A deterministic detect-then-redact pipeline sanitizes raw inputs before anything reaches a model. The first POC is live; work now is preparing training and test data for small-language-model training and evaluation.',
+      'A pipeline that finds and removes passwords and personal data from raw files, so the cleaned data can be used to train and test small AI models.',
     architecture: ['raw dump', 'detect', 'redact', 'SLM train/eval set'],
-    impact: ['First POC shipped', 'Building SLM train & eval datasets'],
+    impact: ['First version working', 'Preparing train & test data for small models'],
     stack: ['Python', 'LLMs', 'SLMs', 'evals'],
     links: { repo: 'https://github.com/AamirAlam/context-sanitizer' },
   },
@@ -51,12 +51,26 @@ export const caseStudies: CaseStudy[] = [
     period: '2026 · in progress',
     kind: ['agentic', 'safety'],
     problem:
-      'LinkedIn job DMs and recruiter emails are a common vector for scams, and vetting each one by hand is slow and error-prone.',
+      'Fake recruiter messages and job posts are common on LinkedIn, and checking each one by hand is slow and easy to get wrong.',
     approach:
-      'An agent reads an incoming LinkedIn job message or email, reviews the job description and sender signals, and flags likely scams with its reasoning, keeping a human in the loop on the final call.',
+      'An AI agent reads recruiter messages and job posts and warns you about likely scams, explaining why. You make the final call.',
     architecture: ['job DM / email', 'agent review', 'risk signals', 'scam verdict'],
     impact: ['In active development'],
     stack: ['TypeScript', 'LLMs', 'agents', 'evals'],
     links: { repo: 'https://github.com/AamirAlam/LinkedInJobScamAgent' },
+  },
+  {
+    slug: 'caliber',
+    name: 'Caliber',
+    period: '2026',
+    kind: ['agentic', 'treasury'],
+    problem:
+      'Letting AI agents manage funds is risky unless every action stays inside clear limits and can be reviewed later.',
+    approach:
+      'AI agents manage funds held as digital assets, but only within clear rules, and every action is logged for review.',
+    architecture: ['treasury funds', 'agent', 'rules check', 'logged action'],
+    impact: ['In development'],
+    stack: ['TypeScript', 'LLMs', 'agents'],
+    links: {},
   },
 ]

@@ -11,20 +11,20 @@ export interface Achievement {
 // Moved verbatim from Achievements.tsx.
 export const achievements: Achievement[] = [
   {
-    title: 'ETH Istanbul 2023',
+    title: 'ETHGlobal Istanbul 2023',
     subtitle: 'Most Refined Project — Winner',
     description:
-      'ETH Global Istanbul hackathon. Recognized for the most refined and production-quality decentralized interface.',
+      'Built Amca, a payments app that protects savings from currency drops.',
     badge: '🏆',
     color: 'from-amber-500/10 to-orange-500/5',
     border: 'border-amber-500/20',
     textColor: 'text-amber-400',
   },
   {
-    title: 'ETH India 2024',
+    title: 'ETHIndia 2024',
     subtitle: 'Finalist',
     description:
-      'Selected as a finalist at ETH India 2024 for innovative project development in the Ethereum ecosystem.',
+      'Built Flow3, a full-stack Web3 app.',
     badge: '🎯',
     color: 'from-violet-500/10 to-indigo-500/5',
     border: 'border-violet-500/20',
@@ -34,7 +34,7 @@ export const achievements: Achievement[] = [
     title: "Master's in Software Engineering",
     subtitle: 'Zakir Husain College of Engineering & Technology',
     description:
-      '2018 – 2020 · Aligarh, India. Specialized in software systems design and engineering.',
+      '2018 – 2020 · Aligarh, India. Also B.Tech. in Computer Engineering (2018) from the same college.',
     badge: '🎓',
     color: 'from-emerald-500/10 to-cyan-500/5',
     border: 'border-emerald-500/20',
