@@ -11,7 +11,7 @@ export default function Approach() {
       <SectionHeader
         label="approach"
         title="How I solve complex problems"
-        sub="The same loop every time, whether the problem is a DeFi vault or a support queue."
+        sub="The same steps every time, whatever the problem."
       />
 
       <div className="relative grid gap-4 lg:grid-cols-5">

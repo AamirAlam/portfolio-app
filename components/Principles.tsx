@@ -11,7 +11,7 @@ export default function Principles() {
       <SectionHeader
         label="principles"
         title="How I design agentic systems"
-        sub="Opinions I've earned by putting agents in front of real users."
+        sub="Rules I follow when building AI agents."
       />
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">

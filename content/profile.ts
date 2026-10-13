@@ -22,27 +22,26 @@ export interface Profile {
 export const profile: Profile = {
   name: 'Aamir Alam',
   role: 'Forward Deployed Engineer',
-  focus: 'Agentic systems & workflow automation',
-  // TODO(copy): headline — the gradient span wraps the final two words.
-  headline: 'I turn messy workflows into agents that ship.',
-  // TODO(copy): lead — uses only existing figures (6+ yrs, 20K+ users).
-  lead: "I embed with teams, map the repetitive work that eats their week, and deliver production agentic apps with evals, guardrails, and humans in the loop. I've spent 6+ years shipping full-stack and on-chain systems used by 20K+ people.",
+  focus: 'Agentic systems & full stack',
+  // The gradient span wraps the final three words.
+  headline: 'I build AI agents that people can trust.',
+  lead: "I've spent 6+ years building real products for fintech, Web3, and medical imaging startups. I work closely with users to find what's actually slowing them down, then build and improve the fix until the results show. Lately I've been building AI agents that are tested, safe, and keep a person in charge of important decisions.",
   status: 'Open to FDE roles',
-  // Only impact figures already present on the site — never invented.
+  // Only figures from the resume — never invented.
   metrics: [
     { value: '6+ yrs', label: 'shipping production systems' },
-    { value: '20K+', label: 'users on systems I led' },
-    { value: '2–3h → <1m', label: 'workflow time I automated away' },
+    { value: '20K+', label: 'users on products I led' },
+    { value: '$150K+', label: 'managed in Neura Vaults' },
     { value: '🏆 ETH Istanbul', label: 'winner · ETH India finalist' },
   ],
-  // TODO(copy): agentRun — lines rendered in the hero "terminal" card.
+  // Lines rendered in the hero "terminal" card — the Neura Vaults flow.
   agentRun: [
-    '$ agent run --workflow "triage-ci-failures"',
-    'plan   → classify · fetch logs · propose fix',
-    'tools  → github, ci, slack',
-    'guard  → human approval on write',
-    'eval   → 42/45 golden cases ✓',
-    '✔ shipped · 3h/day → 10 min/day',
+    '$ neura-vaults rebalance',
+    'read   → market data',
+    'agent  → suggest a rebalance',
+    'rules  → check strict limits',
+    'human  → approve the move',
+    '✔ live · 200+ users · $150K+ managed',
   ],
   email: 'aamiralam1991@gmail.com',
   links: {
@@ -57,11 +56,11 @@ export const profile: Profile = {
     // TODO(copy): SEO wording.
     title: 'Aamir Alam — Forward Deployed Engineer',
     description:
-      'Forward Deployed Engineer building production agentic systems and automating repetitive workflows. 6+ years shipping full-stack and on-chain systems used by 20K+ people. ETH Istanbul winner, ETH India finalist.',
+      'Forward Deployed Engineer with 6+ years building real products for fintech, Web3, and medical imaging startups. Now building AI agents that are tested, safe, and keep a person in charge. ETHGlobal Istanbul winner, ETHIndia finalist.',
     keywords: [
       'Forward Deployed Engineer',
       'Agentic systems',
-      'Workflow automation',
+      'AI agents',
       'LLM agents',
       'Full Stack',
       'Web3',

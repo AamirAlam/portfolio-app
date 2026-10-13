@@ -4,36 +4,36 @@ export interface Principle {
   body: string
 }
 
-// TODO(copy): opinionated design principles for agentic systems.
+// Design principles for agentic systems.
 export const principles: Principle[] = [
   {
-    tag: 'workflow first',
-    title: 'Automate the workflow, not the demo',
-    body: 'Start from a repetitive task with a measurable cost. No cost, no agent.',
+    tag: 'real problems',
+    title: 'Start with a real problem',
+    body: 'Pick work that actually slows people down. If nothing is slow, no agent is needed.',
   },
   {
-    tag: 'determinism',
-    title: 'Code where you can, model where you must',
-    body: 'Use the LLM only for judgement steps. Everything else stays typed and testable.',
+    tag: 'keep it simple',
+    title: 'Use plain code where you can',
+    body: 'Use the AI model only where judgement is needed. Everything else stays normal, testable code.',
   },
   {
     tag: 'human-in-the-loop',
-    title: 'Humans approve irreversible actions',
-    body: 'Agents propose and people dispose, at least until the evals say otherwise.',
+    title: 'A person approves important moves',
+    body: 'The agent suggests, a person decides. In Neura Vaults, every rebalance is approved by a human.',
   },
   {
     tag: 'evals',
-    title: 'No eval, no ship',
-    body: 'Golden datasets and regression checks run before every prompt or model change.',
+    title: 'Test before every release',
+    body: 'Check the agent against real examples before changing a prompt or a model.',
   },
   {
-    tag: 'context hygiene',
-    title: 'Clean context in, safe output out',
-    body: 'Sanitize secrets and PII before anything reaches a model.',
+    tag: 'safe data',
+    title: 'Clean data in, safe output out',
+    body: 'Remove passwords and personal data before anything reaches a model.',
   },
   {
-    tag: 'observability',
-    title: 'Every step is traceable',
-    body: 'Log tool calls, inputs, and decisions so failures can be debugged, not guessed at.',
+    tag: 'logging',
+    title: 'Log every decision',
+    body: 'Record what the agent saw and did, so problems can be traced instead of guessed at.',
   },
 ]
