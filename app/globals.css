@@ -2,21 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background: 255 255 255;
+  --foreground: 10 10 10;
+  --subtle: 64 64 64;
+  --muted: 115 115 115;
+  --faint: 163 163 163;
+  --border: 229 229 229;
+  --secondary: 245 245 245;
+  color-scheme: light;
+}
+
+.dark {
+  --background: 10 10 10;
+  --foreground: 250 250 250;
+  --subtle: 212 212 212;
+  --muted: 163 163 163;
+  --faint: 115 115 115;
+  --border: 38 38 38;
+  --secondary: 23 23 23;
+  color-scheme: dark;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background: #ffffff;
-  color: #0a0a0a;
+  background: rgb(var(--background));
+  color: rgb(var(--foreground));
   font-family: var(--font-inter);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background: #0a0a0a;
-  color: #ffffff;
+  background: rgb(var(--foreground));
+  color: rgb(var(--background));
 }
 
 /*
@@ -44,9 +66,9 @@ body {
 }
 
 .tag {
-  @apply inline-flex items-center rounded-md bg-secondary px-1.5 py-0.5 text-[11px] font-medium text-neutral-700;
+  @apply inline-flex items-center rounded-md bg-secondary px-1.5 py-0.5 text-[11px] font-medium text-subtle;
 }
 
 .link {
-  @apply underline underline-offset-4 decoration-neutral-400 transition-colors hover:decoration-foreground;
+  @apply underline underline-offset-4 decoration-faint transition-colors hover:decoration-foreground;
 }

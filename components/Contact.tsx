@@ -5,7 +5,7 @@ export default function Contact() {
   return (
     <Reveal>
       <section id="contact" className="scroll-mt-24 pb-24 pt-8 text-center">
-        <span className="inline-block rounded-lg bg-foreground px-3 py-1 text-sm text-white">
+        <span className="inline-block rounded-lg bg-foreground px-3 py-1 text-sm text-background">
           Contact
         </span>
         <h2 className="mt-4 text-3xl font-bold tracking-tighter sm:text-5xl">

@@ -12,11 +12,11 @@ function getLevel(count: number): number {
 }
 
 const levelColors = [
-  'bg-neutral-100',
-  'bg-neutral-300',
+  'bg-neutral-100 dark:bg-neutral-800',
+  'bg-neutral-300 dark:bg-neutral-700',
   'bg-neutral-500',
-  'bg-neutral-700',
-  'bg-neutral-900',
+  'bg-neutral-700 dark:bg-neutral-300',
+  'bg-neutral-900 dark:bg-neutral-100',
 ]
 
 // Square size and gap, sized so a full year fits the max-w-2xl column.
@@ -127,7 +127,7 @@ export default function ContributionGraph({ calendar }: { calendar: Contribution
       {/* Floating tooltip */}
       {tooltip && (
         <div
-          className="fixed z-50 px-2.5 py-1.5 bg-foreground rounded-md text-xs text-white pointer-events-none"
+          className="fixed z-50 px-2.5 py-1.5 bg-foreground rounded-md text-xs text-background pointer-events-none"
           style={{ left: tooltip.x, top: tooltip.y, transform: 'translate(-50%, -100%)' }}
         >
           {tooltip.text}

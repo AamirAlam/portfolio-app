@@ -40,7 +40,7 @@ export default function Hero() {
             href={l.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="link text-neutral-700 hover:text-foreground"
+            className="link text-subtle hover:text-foreground"
           >
             {l.label}
           </a>
@@ -49,7 +49,7 @@ export default function Hero() {
 
       <a
         href={`mailto:${profile.email}`}
-        className="link mt-3 inline-flex items-center gap-2 text-sm text-neutral-700 hover:text-foreground"
+        className="link mt-3 inline-flex items-center gap-2 text-sm text-subtle hover:text-foreground"
       >
         <MailIcon size={14} />
         {profile.email}

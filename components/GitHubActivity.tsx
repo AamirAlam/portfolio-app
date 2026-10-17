@@ -42,7 +42,7 @@ export default async function GitHubActivity() {
                 className="group flex items-start justify-between gap-4 rounded-md px-3 py-4 transition-colors hover:bg-secondary"
               >
                 <div>
-                  <h3 className="text-base font-medium leading-snug underline decoration-neutral-400 underline-offset-4 transition-colors group-hover:decoration-foreground">
+                  <h3 className="text-base font-medium leading-snug underline decoration-faint underline-offset-4 transition-colors group-hover:decoration-foreground">
                     {repo.name}
                   </h3>
                   <p className="mt-1.5 text-sm text-muted">{repo.description}</p>

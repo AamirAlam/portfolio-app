@@ -9,7 +9,7 @@ function LinkBadge({ href, label, icon }: { href: string; label: string; icon: R
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-1 rounded-md bg-foreground px-2 py-1 text-[11px] font-medium text-white transition-opacity hover:opacity-80"
+      className="inline-flex items-center gap-1 rounded-md bg-foreground px-2 py-1 text-[11px] font-medium text-background transition-opacity hover:opacity-80"
     >
       {icon}
       {label}
@@ -34,7 +34,7 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
         </p>
       </div>
 
-      <p className="mt-3 font-mono text-[11px] text-neutral-500">
+      <p className="mt-3 font-mono text-[11px] text-muted">
         {study.architecture.join(' → ')}
       </p>
 

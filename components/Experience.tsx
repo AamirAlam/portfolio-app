@@ -17,7 +17,7 @@ export default function Experience() {
                 </span>
               </div>
               <p className="text-sm">{job.role}</p>
-              <ul className="mt-2 list-disc space-y-1 pl-4 text-sm leading-relaxed text-muted marker:text-neutral-300">
+              <ul className="mt-2 list-disc space-y-1 pl-4 text-sm leading-relaxed text-muted marker:text-faint">
                 {job.bullets.map((b, i) => (
                   <li key={i}>{b}</li>
                 ))}
