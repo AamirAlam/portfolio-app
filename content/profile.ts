@@ -28,7 +28,7 @@ export const profile: Profile = {
     x: 'https://x.com/AamirAlam201096',
     devfolio: 'https://devfolio.co/projects/flow-bd3f',
   },
-  avatar: 'https://avatars.githubusercontent.com/u/56264430',
+  avatar: '/avatar.jpg',
   siteUrl: 'https://aamir-alam.vercel.app',
   seo: {
     // TODO(copy): SEO wording.

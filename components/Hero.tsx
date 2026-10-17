@@ -29,7 +29,7 @@ export default function Hero() {
           width={144}
           height={144}
           priority
-          className="h-28 w-28 shrink-0 rounded-2xl grayscale sm:h-36 sm:w-36"
+          className="h-28 w-28 shrink-0 rounded-2xl object-cover grayscale sm:h-36 sm:w-36"
         />
       </div>
 
