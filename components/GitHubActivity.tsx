@@ -28,7 +28,7 @@ export default async function GitHubActivity() {
       <section id="shipping" className="scroll-mt-24">
         <SectionHeader
           title="Open Source"
-          sub="What I've pushed to GitHub recently."
+          sub="Agent projects I'm building in the open."
         />
 
         {repos.length > 0 && (

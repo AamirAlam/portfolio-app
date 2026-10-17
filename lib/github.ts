@@ -23,7 +23,12 @@ export interface ContributionCalendar {
 }
 
 export const EXCLUDE = ['AamirAlam', 'portfolio-app']
-export const FEATURED: string[] = []
+// Pinned to the top of Open Source, in this order.
+export const FEATURED: string[] = [
+  'LinkedInJobScamAgent',
+  'context-sanitizer-slm-data-pipeline',
+  'caliber',
+]
 
 // Shape of a raw GitHub REST repo, narrowed to the fields we read.
 interface RawRepo {
@@ -88,7 +93,7 @@ export function selectRepos(
 // token would turn an otherwise-public 200 into a 401. ISR revalidates hourly,
 // well within the unauthenticated rate limit, so we fetch it tokenless. Only
 // the contribution calendar (GraphQL) is token-gated.
-export async function getRecentRepos(limit = 6): Promise<Repo[]> {
+export async function getRecentRepos(limit = 3): Promise<Repo[]> {
   try {
     const res = await fetch(
       `${API}/users/${USERNAME}/repos?per_page=100&sort=pushed`,

@@ -53,10 +53,14 @@ export const caseStudies: CaseStudy[] = [
     problem:
       'Fake recruiter messages and job posts are common on LinkedIn, and checking each one by hand is slow and easy to get wrong.',
     approach:
-      'An AI agent reads recruiter messages and job posts and warns you about likely scams, explaining why. You make the final call.',
-    architecture: ['job DM / email', 'agent review', 'risk signals', 'scam verdict'],
-    impact: ['In active development'],
-    stack: ['TypeScript', 'LLMs', 'agents', 'evals'],
+      'The agent reads a recruiting conversation message by message and keeps a scam probability that updates as evidence appears. Low risk is SAFE, uncertain cases are held for a person to review, and high risk is FLAGGED.',
+    architecture: ['conversation', 'belief update', 'SAFE / HOLD / FLAG', 'human review'],
+    impact: [
+      '100% precision on 43 labelled conversations',
+      'Cost of mistakes 60 → 22 vs. a plain classifier',
+      '95% of scams held or flagged',
+    ],
+    stack: ['TypeScript', 'LLMs', 'Bayesian updates', 'evals'],
     links: { repo: 'https://github.com/AamirAlam/LinkedInJobScamAgent' },
   },
   {

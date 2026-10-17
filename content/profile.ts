@@ -16,10 +16,10 @@ export const profile: Profile = {
   role: 'Forward Deployed Engineer',
   headline: 'I build AI agents that people can trust.',
   about: [
-    "I'm a **Forward Deployed Engineer** with **6+ years** building real products for **fintech, Web3, and medical imaging** startups. I'm currently at **Autonom**, building **Rust and TypeScript services** that read Solana blockchain data and execute trades in **under 300ms**.",
-    'Before that, I spent two years at **API3** building analytics for trading bots and **automating lending-protocol deployments**. At **QuickSwap** I found what was slowing down the trading app and cut its load time by **80%**.',
-    "I work closely with users to find what's actually slowing them down, then build and improve the fix until the results show.",
-    'Lately I have been building **AI agents that people can trust**: tested against real examples, kept inside **clear rules**, and with **a person in charge** of important decisions. **Neura Vaults** is the live example, with **200+ users** and **$150K+ managed**.',
+    "I'm a **Forward Deployed Engineer** with **6+ years** shipping production systems for **fintech, Web3, and medical imaging** startups. I work closely with users to find what's actually slowing them down, then build the fix and keep improving it until the results show.",
+    "I'm currently at **Autonom Labs**, building a **perpetuals DEX on Solana**. I write the **off-chain services for liquidations and limit orders**, the parts that have to be **fast and must not miss**. They execute in **under 300ms**, and adding automatic fallback providers cut failed liquidation transactions by **70%**.",
+    "Alongside that, I build **AI agents that reason under uncertainty**. Instead of a yes/no answer, the agent keeps a **probability that updates with every new piece of evidence** and picks between acting, **holding for a human**, or flagging. In my **LinkedIn scam detection agent**, this kept **100% precision** but cut the **cost of mistakes from 60 to 22** against a plain classifier, because unsure cases went to human review instead of being marked safe.",
+    'Before Autonom, I built DeFi analytics and deployment automation at **API3**, and cut the **QuickSwap** trading app\'s load time by **80%**.',
   ],
   email: 'aamiralam1991@gmail.com',
   links: {
