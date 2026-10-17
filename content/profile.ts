@@ -1,17 +1,9 @@
-export interface Metric {
-  value: string
-  label: string
-}
-
 export interface Profile {
   name: string
   role: string
-  focus: string
   headline: string
-  lead: string
-  status: string
-  metrics: Metric[]
-  agentRun: string[]
+  // About paragraphs; **double asterisks** mark highlighted phrases.
+  about: string[]
   email: string
   links: { github: string; linkedin: string; x: string; devfolio: string }
   avatar: string
@@ -22,26 +14,12 @@ export interface Profile {
 export const profile: Profile = {
   name: 'Aamir Alam',
   role: 'Forward Deployed Engineer',
-  focus: 'Agentic systems & full stack',
-  // The gradient span wraps the final three words.
   headline: 'I build AI agents that people can trust.',
-  lead: "I've spent 6+ years building real products for fintech, Web3, and medical imaging startups. I work closely with users to find what's actually slowing them down, then build and improve the fix until the results show. Lately I've been building AI agents that are tested, safe, and keep a person in charge of important decisions.",
-  status: 'Open to FDE roles',
-  // Only figures from the resume — never invented.
-  metrics: [
-    { value: '6+ yrs', label: 'shipping production systems' },
-    { value: '20K+', label: 'users on products I led' },
-    { value: '$150K+', label: 'managed in Neura Vaults' },
-    { value: '🏆 ETH Istanbul', label: 'winner · ETH India finalist' },
-  ],
-  // Lines rendered in the hero "terminal" card — the Neura Vaults flow.
-  agentRun: [
-    '$ neura-vaults rebalance',
-    'read   → market data',
-    'agent  → suggest a rebalance',
-    'rules  → check strict limits',
-    'human  → approve the move',
-    '✔ live · 200+ users · $150K+ managed',
+  about: [
+    "I'm a **Forward Deployed Engineer** with **6+ years** building real products for **fintech, Web3, and medical imaging** startups. I'm currently at **Autonom**, building **Rust and TypeScript services** that read Solana blockchain data and execute trades in **under 300ms**.",
+    'Before that, I spent two years at **API3** building analytics for trading bots and **automating lending-protocol deployments**. At **QuickSwap** I found what was slowing down the trading app and cut its load time by **80%**.',
+    "I work closely with users to find what's actually slowing them down, then build and improve the fix until the results show.",
+    'Lately I have been building **AI agents that people can trust**: tested against real examples, kept inside **clear rules**, and with **a person in charge** of important decisions. **Neura Vaults** is the live example, with **200+ users** and **$150K+ managed**.',
   ],
   email: 'aamiralam1991@gmail.com',
   links: {

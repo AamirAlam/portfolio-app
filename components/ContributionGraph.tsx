@@ -12,12 +12,16 @@ function getLevel(count: number): number {
 }
 
 const levelColors = [
-  'bg-[#161b22]',
-  'bg-violet-950',
-  'bg-violet-800',
-  'bg-violet-600',
-  'bg-violet-400',
+  'bg-neutral-100',
+  'bg-neutral-300',
+  'bg-neutral-500',
+  'bg-neutral-700',
+  'bg-neutral-900',
 ]
+
+// Square size and gap, sized so a full year fits the max-w-2xl column.
+const CELL = 9
+const GAP = 2
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 const DAYS = ['', 'Mon', '', 'Wed', '', 'Fri', '']
@@ -39,10 +43,10 @@ export default function ContributionGraph({ calendar }: { calendar: Contribution
   })
 
   return (
-    <div className="card p-6 relative">
-      <div className="flex items-center justify-between mb-5">
-        <h3 className="text-slate-200 font-medium text-sm">
-          <span className="text-violet-400 font-semibold">
+    <div className="relative">
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-sm">
+          <span className="font-semibold">
             {calendar.totalContributions.toLocaleString()}
           </span>{' '}
           contributions in the last year
@@ -51,21 +55,21 @@ export default function ContributionGraph({ calendar }: { calendar: Contribution
           href="https://github.com/AamirAlam"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xs text-slate-600 hover:text-slate-400 transition-colors font-mono"
+          className="link text-xs text-muted hover:text-foreground"
         >
-          github.com/AamirAlam →
+          GitHub ↗
         </a>
       </div>
 
       <div className="overflow-x-auto pb-2">
-        <div style={{ minWidth: 680 }}>
+        <div style={{ minWidth: 53 * (CELL + GAP) + 32 }}>
           {/* Month labels */}
           <div className="relative h-5 mb-1 ml-8">
             {monthLabels.map(({ label, index }) => (
               <span
                 key={label + index}
-                className="absolute text-[10px] text-slate-600 font-mono"
-                style={{ left: index * 13 }}
+                className="absolute text-[10px] text-muted"
+                style={{ left: index * (CELL + GAP) }}
               >
                 {label}
               </span>
@@ -74,9 +78,9 @@ export default function ContributionGraph({ calendar }: { calendar: Contribution
 
           <div className="flex gap-0">
             {/* Day-of-week labels */}
-            <div className="flex flex-col gap-[3px] mr-2">
+            <div className="flex flex-col mr-2" style={{ gap: GAP }}>
               {DAYS.map((d, i) => (
-                <div key={i} className="text-[10px] text-slate-700 font-mono h-[10px] flex items-center">
+                <div key={i} className="text-[10px] text-muted flex items-center" style={{ height: CELL }}>
                   {d}
                 </div>
               ))}
@@ -84,15 +88,15 @@ export default function ContributionGraph({ calendar }: { calendar: Contribution
 
             {/* Contribution squares */}
             {calendar.weeks.map((week, wi) => (
-              <div key={wi} className="flex flex-col gap-[3px] mr-[3px]">
+              <div key={wi} className="flex flex-col" style={{ gap: GAP, marginRight: GAP }}>
                 {Array.from({ length: 7 }).map((_, di) => {
                   const day = week.contributionDays[di]
-                  if (!day) return <div key={di} style={{ width: 10, height: 10 }} />
+                  if (!day) return <div key={di} style={{ width: CELL, height: CELL }} />
                   return (
                     <div
                       key={di}
                       className={`rounded-sm cursor-default transition-opacity hover:opacity-70 ${levelColors[getLevel(day.contributionCount)]}`}
-                      style={{ width: 10, height: 10 }}
+                      style={{ width: CELL, height: CELL }}
                       onMouseEnter={(e) => {
                         const rect = (e.target as HTMLElement).getBoundingClientRect()
                         setTooltip({
@@ -110,10 +114,10 @@ export default function ContributionGraph({ calendar }: { calendar: Contribution
           </div>
 
           {/* Legend */}
-          <div className="flex items-center justify-end gap-1.5 mt-3 text-[10px] text-slate-600 font-mono">
+          <div className="flex items-center justify-end gap-1.5 mt-3 text-[10px] text-muted">
             <span>Less</span>
             {[0, 1, 2, 3, 4].map((l) => (
-              <div key={l} className={`rounded-sm ${levelColors[l]}`} style={{ width: 10, height: 10 }} />
+              <div key={l} className={`rounded-sm ${levelColors[l]}`} style={{ width: CELL, height: CELL }} />
             ))}
             <span>More</span>
           </div>
@@ -123,7 +127,7 @@ export default function ContributionGraph({ calendar }: { calendar: Contribution
       {/* Floating tooltip */}
       {tooltip && (
         <div
-          className="fixed z-50 px-2.5 py-1.5 bg-[#1a1a2e] border border-indigo-500/20 rounded-md text-xs text-slate-300 font-mono pointer-events-none"
+          className="fixed z-50 px-2.5 py-1.5 bg-foreground rounded-md text-xs text-white pointer-events-none"
           style={{ left: tooltip.x, top: tooltip.y, transform: 'translate(-50%, -100%)' }}
         >
           {tooltip.text}

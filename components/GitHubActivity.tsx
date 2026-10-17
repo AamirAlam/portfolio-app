@@ -1,4 +1,4 @@
-import { getRecentRepos, getContributionCalendar, type Repo } from '@/lib/github'
+import { getRecentRepos, getContributionCalendar } from '@/lib/github'
 import SectionHeader from './ui/SectionHeader'
 import ContributionGraph from './ContributionGraph'
 import Reveal from './ui/Reveal'
@@ -15,94 +15,57 @@ function timeAgo(iso: string): string {
   return `${Math.floor(months / 12)}y ago`
 }
 
-// A small, stable palette for common languages; others fall back to indigo.
-const languageColors: Record<string, string> = {
-  TypeScript: '#3178c6',
-  JavaScript: '#f1e05a',
-  Python: '#3572a5',
-  Solidity: '#aa6746',
-  Go: '#00add8',
-  Rust: '#dea584',
-  HTML: '#e34c26',
-  CSS: '#563d7c',
-  Shell: '#89e051',
-}
-
-function RepoCard({ repo }: { repo: Repo }) {
-  return (
-    <a
-      href={repo.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="card p-5 flex flex-col gap-3 h-full"
-    >
-      <div className="flex items-center justify-between gap-3">
-        <span className="text-xs text-slate-600 font-mono">
-          {timeAgo(repo.pushedAt)}
-        </span>
-        {repo.stars > 0 && (
-          <span className="flex items-center gap-1 text-xs text-slate-500 font-mono">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
-            </svg>
-            {repo.stars}
-          </span>
-        )}
-      </div>
-
-      <h3 className="text-slate-100 font-semibold text-sm font-mono break-all">
-        {repo.name}
-      </h3>
-
-      <p className="text-slate-500 text-sm leading-relaxed flex-1">
-        {repo.description}
-      </p>
-
-      <div className="flex items-center gap-3 flex-wrap">
-        {repo.language && (
-          <span className="flex items-center gap-1.5 text-xs text-slate-500 font-mono">
-            <span
-              className="w-2.5 h-2.5 rounded-full"
-              style={{ backgroundColor: languageColors[repo.language] ?? '#6366f1' }}
-            />
-            {repo.language}
-          </span>
-        )}
-        {repo.topics.slice(0, 3).map((t) => (
-          <span key={t} className="tag">
-            {t}
-          </span>
-        ))}
-      </div>
-    </a>
-  )
-}
-
 export default async function GitHubActivity() {
   const [repos, calendar] = await Promise.all([
     getRecentRepos(),
     getContributionCalendar(),
   ])
 
+  if (repos.length === 0 && !calendar) return null
+
   return (
-    <section id="shipping" className="max-w-6xl mx-auto px-6 py-20">
-      <SectionHeader
-        label="shipping now"
-        title="Recently on GitHub"
-        sub="Pulled from the GitHub API, refreshed hourly."
-      />
+    <Reveal>
+      <section id="shipping" className="scroll-mt-24">
+        <SectionHeader
+          title="Open Source"
+          sub="What I've pushed to GitHub recently."
+        />
 
-      {repos.length > 0 && (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-          {repos.map((repo, i) => (
-            <Reveal key={repo.name} delay={i * 60} className="h-full">
-              <RepoCard repo={repo} />
-            </Reveal>
-          ))}
-        </div>
-      )}
+        {repos.length > 0 && (
+          <div className="-mx-3 divide-y divide-border">
+            {repos.map((repo) => (
+              <a
+                key={repo.name}
+                href={repo.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-start justify-between gap-4 rounded-md px-3 py-4 transition-colors hover:bg-secondary"
+              >
+                <div>
+                  <h3 className="text-base font-medium leading-snug underline decoration-neutral-400 underline-offset-4 transition-colors group-hover:decoration-foreground">
+                    {repo.name}
+                  </h3>
+                  <p className="mt-1.5 text-sm text-muted">{repo.description}</p>
+                  <p className="mt-1.5 text-xs text-muted">
+                    {[repo.language, repo.stars > 0 ? `★ ${repo.stars}` : null, timeAgo(repo.pushedAt)]
+                      .filter(Boolean)
+                      .join(' / ')}
+                  </p>
+                </div>
+                <span className="mt-0.5 shrink-0 text-xs text-muted opacity-0 transition-opacity group-hover:opacity-100">
+                  ↗
+                </span>
+              </a>
+            ))}
+          </div>
+        )}
 
-      {calendar && <ContributionGraph calendar={calendar} />}
-    </section>
+        {calendar && (
+          <div className="mt-6">
+            <ContributionGraph calendar={calendar} />
+          </div>
+        )}
+      </section>
+    </Reveal>
   )
 }

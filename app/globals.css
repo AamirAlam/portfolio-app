@@ -2,37 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
 html {
   scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: #3730a3 #0d0d1a;
-}
-
-html::-webkit-scrollbar {
-  width: 6px;
-}
-
-html::-webkit-scrollbar-track {
-  background: #0d0d1a;
-}
-
-html::-webkit-scrollbar-thumb {
-  background: #3730a3;
-  border-radius: 3px;
 }
 
 body {
-  background: #070710;
-  color: #f1f5f9;
+  background: #ffffff;
+  color: #0a0a0a;
   font-family: var(--font-inter);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: #0a0a0a;
+  color: #ffffff;
 }
 
 /*
@@ -42,8 +26,8 @@ body {
  */
 .js .section-fade {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .js .section-fade.visible {
@@ -59,26 +43,10 @@ body {
   }
 }
 
-.grid-bg {
-  background-image:
-    linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
-  background-size: 48px 48px;
-}
-
-.glow-violet {
-  box-shadow: 0 0 40px rgba(124, 58, 237, 0.15);
-}
-
 .tag {
-  @apply text-xs font-mono px-2.5 py-1 rounded-md bg-indigo-500/10 text-indigo-300 border border-indigo-500/20;
+  @apply inline-flex items-center rounded-md bg-secondary px-1.5 py-0.5 text-[11px] font-medium text-neutral-700;
 }
 
-.card {
-  @apply bg-[#0d0d1a] border border-indigo-500/10 rounded-xl transition-all duration-300;
-}
-
-.card:hover {
-  @apply border-indigo-500/25;
-  box-shadow: 0 0 24px rgba(99, 102, 241, 0.08);
+.link {
+  @apply underline underline-offset-4 decoration-neutral-400 transition-colors hover:decoration-foreground;
 }

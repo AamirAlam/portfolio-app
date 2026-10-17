@@ -1,27 +1,27 @@
-import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
-import Approach from '@/components/Approach'
-import Principles from '@/components/Principles'
+import About from '@/components/About'
+import Experience from '@/components/Experience'
 import CaseStudies from '@/components/CaseStudies'
 import GitHubActivity from '@/components/GitHubActivity'
+import HowIWork from '@/components/HowIWork'
 import Skills from '@/components/Skills'
-import Experience from '@/components/Experience'
 import Achievements from '@/components/Achievements'
-import Footer from '@/components/Footer'
+import Contact from '@/components/Contact'
+import Dock from '@/components/Dock'
 
 export default function Home() {
   return (
-    <main className="bg-[#070710] text-slate-100 min-h-screen">
-      <Nav />
+    <main className="mx-auto max-w-2xl px-6 py-12 sm:py-24 space-y-16">
       <Hero />
-      <Approach />
-      <Principles />
+      <About />
+      <Experience />
       <CaseStudies />
       <GitHubActivity />
-      <Experience />
+      <HowIWork />
       <Skills />
       <Achievements />
-      <Footer />
+      <Contact />
+      <Dock />
     </main>
   )
 }
