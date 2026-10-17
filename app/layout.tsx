@@ -39,16 +39,24 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    // Dark by default; the inline script below drops `dark` when the visitor
+    // has chosen light, before first paint.
+    <html
+      lang="en"
+      className={`dark ${inter.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
+    >
       <body>
         {/*
-          Marks that JS is available before first paint, which enables the
-          scroll-reveal hidden state (.js .section-fade in globals.css). With
-          JS disabled this never runs, so all content stays visible.
+          Runs before first paint: marks that JS is available, which enables
+          the scroll-reveal hidden state (.js .section-fade in globals.css),
+          and applies a saved light-theme choice. With JS disabled this never
+          runs, so content stays visible and the theme stays dark.
         */}
         <script
           dangerouslySetInnerHTML={{
-            __html: "document.documentElement.classList.add('js')",
+            __html:
+              "var d=document.documentElement;d.classList.add('js');try{if(localStorage.getItem('theme')==='light')d.classList.remove('dark')}catch(e){}",
           }}
         />
         {children}

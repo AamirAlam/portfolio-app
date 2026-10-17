@@ -2,37 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+:root {
+  --background: 255 255 255;
+  --foreground: 10 10 10;
+  --subtle: 64 64 64;
+  --muted: 115 115 115;
+  --faint: 163 163 163;
+  --border: 229 229 229;
+  --secondary: 245 245 245;
+  color-scheme: light;
+}
+
+.dark {
+  --background: 10 10 10;
+  --foreground: 250 250 250;
+  --subtle: 212 212 212;
+  --muted: 163 163 163;
+  --faint: 115 115 115;
+  --border: 38 38 38;
+  --secondary: 23 23 23;
+  color-scheme: dark;
 }
 
 html {
   scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: #3730a3 #0d0d1a;
-}
-
-html::-webkit-scrollbar {
-  width: 6px;
-}
-
-html::-webkit-scrollbar-track {
-  background: #0d0d1a;
-}
-
-html::-webkit-scrollbar-thumb {
-  background: #3730a3;
-  border-radius: 3px;
 }
 
 body {
-  background: #070710;
-  color: #f1f5f9;
+  background: rgb(var(--background));
+  color: rgb(var(--foreground));
   font-family: var(--font-inter);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgb(var(--foreground));
+  color: rgb(var(--background));
 }
 
 /*
@@ -42,8 +48,8 @@ body {
  */
 .js .section-fade {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .js .section-fade.visible {
@@ -59,26 +65,10 @@ body {
   }
 }
 
-.grid-bg {
-  background-image:
-    linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
-  background-size: 48px 48px;
-}
-
-.glow-violet {
-  box-shadow: 0 0 40px rgba(124, 58, 237, 0.15);
-}
-
 .tag {
-  @apply text-xs font-mono px-2.5 py-1 rounded-md bg-indigo-500/10 text-indigo-300 border border-indigo-500/20;
+  @apply inline-flex items-center rounded-md bg-secondary px-1.5 py-0.5 text-[11px] font-medium text-subtle;
 }
 
-.card {
-  @apply bg-[#0d0d1a] border border-indigo-500/10 rounded-xl transition-all duration-300;
-}
-
-.card:hover {
-  @apply border-indigo-500/25;
-  box-shadow: 0 0 24px rgba(99, 102, 241, 0.08);
+.link {
+  @apply underline underline-offset-4 decoration-faint transition-colors hover:decoration-foreground;
 }
