@@ -10,13 +10,13 @@ export interface Job {
 // Matches the resume (FDE-1-b.pdf).
 export const jobs: Job[] = [
   {
-    company: 'Autonom',
+    company: 'Autonom Labs',
     role: 'Senior Full Stack Engineer',
     period: 'Dec 2025 — Present',
     location: 'Remote',
     bullets: [
       'Found that liquidations failed when the network was busy because we relied on one provider; added automatic backup providers, cutting failed transactions by 70%',
-      'Building Rust and TypeScript services that read Solana blockchain data and execute trades in under 300ms',
+      'Building off-chain liquidation and limit-order services for a perpetuals DEX on Solana in Rust and TypeScript, executing in under 300ms',
     ],
     tags: ['Rust', 'TypeScript', 'Solana', 'DeFi'],
   },
